@@ -1,6 +1,42 @@
-@PJATK_APBD_Cw4_s29953_HostAddress = http://localhost:5250
+@host = http://localhost:5250
 
-GET {{PJATK_APBD_Cw4_s29953_HostAddress}}/weatherforecast/
-Accept: application/json
+### GET all PCs
+GET {{host}}/api/pcs
 
 ###
+
+### GET PC components
+GET {{host}}/api/pcs/1/components
+
+###
+
+### POST new PC
+POST {{host}}/api/pcs
+Content-Type: application/json
+
+{
+  "name": "Student Laptop",
+  "weight": 2.1,
+  "warranty": 24,
+  "createdAt": "2026-05-25T18:00:00",
+  "stock": 7
+}
+
+###
+
+### PUT update PC
+PUT {{host}}/api/pcs/4
+Content-Type: application/json
+
+{
+  "name": "Updated Student Laptop",
+  "weight": 2.3,
+  "warranty": 36,
+  "createdAt": "2026-05-25T18:00:00",
+  "stock": 10
+}
+
+###
+
+### DELETE PC
+DELETE {{host}}/api/pcs/4
