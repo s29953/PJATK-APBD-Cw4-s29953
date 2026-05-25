@@ -16,6 +16,7 @@ public class PCsController : ControllerBase
     }
 
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll()
     {
         var pcs = await _pcService.GetAllAsync();
@@ -23,6 +24,8 @@ public class PCsController : ControllerBase
     }
 
     [HttpGet("{id}/components")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetComponents(int id)
     {
         var components = await _pcService.GetComponentsByPcIdAsync(id);
@@ -34,6 +37,7 @@ public class PCsController : ControllerBase
     }
 
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> Create([FromBody] PCRequestDto dto)
     {
         var createdPc = await _pcService.CreateAsync(dto);
@@ -42,6 +46,8 @@ public class PCsController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Update(int id, [FromBody] PCRequestDto dto)
     {
         var updated = await _pcService.UpdateAsync(id, dto);
@@ -53,6 +59,8 @@ public class PCsController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> Delete(int id)
     {
         var deleted = await _pcService.DeleteAsync(id);

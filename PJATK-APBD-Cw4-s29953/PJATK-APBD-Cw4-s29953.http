@@ -1,16 +1,6 @@
 @host = http://localhost:5250
 
-### GET all PCs
-GET {{host}}/api/pcs
-
-###
-
-### GET PC components
-GET {{host}}/api/pcs/1/components
-
-###
-
-### POST new PC
+### POST
 POST {{host}}/api/pcs
 Content-Type: application/json
 
@@ -24,7 +14,7 @@ Content-Type: application/json
 
 ###
 
-### PUT update PC
+### PUT
 PUT {{host}}/api/pcs/4
 Content-Type: application/json
 
@@ -38,5 +28,10 @@ Content-Type: application/json
 
 ###
 
-### DELETE PC
+### DELETE
 DELETE {{host}}/api/pcs/4
+
+###
+
+### 404 TEST
+GET {{host}}/api/pcs/999/components
